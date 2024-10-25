@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-dark: #0a0e19;
+  --cyber-blue: #40b3ff;
+  --cyber-pink: #ff4081;
+  --cyber-green: #00ff9f;
+  --cyber-purple: #7b5dfa;
+  --cyber-error: #ff4040;
+  --cyber-glow: var(--cyber-blue);
+  --cyber-text: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--cyber-dark);
+  color: var(--cyber-text);
+  background-image: 
+    linear-gradient(to bottom, rgba(64, 179, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to right, rgba(64, 179, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.cyber-border {
+  position: relative;
+  border: 1px solid var(--cyber-blue);
+  background: rgba(64, 179, 255, 0.05);
+  box-shadow: 
+    0 0 10px rgba(64, 179, 255, 0.2),
+    inset 0 0 15px rgba(64, 179, 255, 0.1);
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--cyber-blue) 0%, 
+    transparent 20%, 
+    transparent 80%, 
+    var(--cyber-blue) 100%
+  );
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(8px);
+}
+
+.cyber-button {
+  position: relative;
+  background: var(--cyber-dark);
+  border: 1px solid var(--cyber-blue);
+  color: var(--cyber-blue);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--cyber-blue);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-button:hover {
+  color: var(--cyber-dark);
+  background: var(--cyber-blue);
+  box-shadow: 0 0 20px rgba(64, 179, 255, 0.4);
+}
+
+.cyber-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.neon-text {
+  color: var(--cyber-blue);
+  text-shadow: 
+    0 0 5px var(--cyber-blue),
+    0 0 10px var(--cyber-blue),
+    0 0 20px var(--cyber-blue);
+}
+
+@keyframes cyber-pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.cyber-pulse {
+  animation: cyber-pulse 2s infinite;
+}
+
+@keyframes grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
+}
+
+.scrolling-grid {
+  animation: grid-scroll 20s linear infinite;
+}
